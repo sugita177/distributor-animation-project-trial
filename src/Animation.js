@@ -1,9 +1,13 @@
-import { StateValuesContext } from "./StateValuesProvider";
+import { useSelector } from "react-redux"
 
 export default function Animation() {
+    const angle = useSelector((state) => state.position.angle)
     return (
-        <canvas>
+        <div>
+            <h1>angle: {angle}</h1>
+            <canvas>
             
-        </canvas>
+            </canvas>
+        </div>
     )
 }
