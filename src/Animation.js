@@ -6,7 +6,7 @@ export default function Animation() {
     const centerX = useSelector((state) => state.position.centerX);
     const centerY = useSelector((state) => state.position.centerY);
     const radius = useSelector((state) => state.position.radius);
-    const distributerCanvas = document.querySelector('#distributerCanvas');
+    const distributerCanvas = document.querySelector('#distributorCanvas');
     drawDistributor(distributerCanvas, centerX, centerY, angle, radius);
     return (
         <div>
@@ -14,7 +14,7 @@ export default function Animation() {
             <h2>centerX: {centerX}</h2>
             <h2>centerY: {centerY}</h2>
             <h2>radius: {radius}</h2>
-            <canvas id="distributerCanvas">
+            <canvas id="distributorCanvas">
             
             </canvas>
         </div>
