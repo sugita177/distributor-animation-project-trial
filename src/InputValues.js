@@ -123,7 +123,10 @@ export default function InputValues() {
                             <input 
                             type="number" 
                             value={radius}
-                            onChange={e => dispatch(changeRadius(e.target.value))}
+                            onChange={e => {dispatch(changeRadius(e.target.value));
+                                const canvas = document.querySelector('#distributorCanvas');
+                                drawDistributor(canvas, centerX, centerY, angle, radius);}
+                            }
                             />
                         </td>
                     </tr>
