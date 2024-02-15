@@ -4,6 +4,8 @@ import {increaseAngle, decreaseAngle, changeAngle } from "./redux/positionSlice"
 import {increaseCenterX, decreaseCenterX, changeCenterX } from "./redux/positionSlice";
 import {increaseCenterY, decreaseCenterY, changeCenterY } from "./redux/positionSlice";
 import {increaseRadius, decreaseRadius, changeRadius } from "./redux/positionSlice";
+import { drawDistributor } from "./util/draw_util";
+
 
 export default function InputValues() {
     const angle = useSelector((state) => state.position.angle);
@@ -35,7 +37,9 @@ export default function InputValues() {
                             <input 
                             type="number" 
                             value={angle}
-                            onChange={e => dispatch(changeAngle(e.target.value))}
+                            onChange={e => {dispatch(changeAngle(e.target.value)); 
+                                const canvas = document.querySelector('#distributorCanvas');
+                                drawDistributor(canvas, centerX, centerY, angle, radius)}}
                             />
                         </td>
                     </tr>
