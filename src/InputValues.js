@@ -6,6 +6,10 @@ import {increaseCenterY, decreaseCenterY, changeCenterY } from "./redux/position
 import {increaseRadius, decreaseRadius, changeRadius } from "./redux/positionSlice";
 import { drawDistributor } from "./util/draw_util";
 
+function makePicture(centerX, centerY, angle, radius) {
+    const canvas = document.querySelector('#distributorCanvas');
+    drawDistributor(canvas, centerX, centerY, angle, radius);
+}
 
 export default function InputValues() {
     const angle = useSelector((state) => state.position.angle);
@@ -22,13 +26,19 @@ export default function InputValues() {
                     <tr>
                         <th>増加</th>
                         <td><button onClick={
-                            () => dispatch(increaseAngle())
+                            () => {
+                                dispatch(increaseAngle());
+                                makePicture(centerX, centerY, angle, radius);
+                            }
                         }>plus</button></td>
                     </tr>
                     <tr>
                         <th>減少</th>
                         <td><button onClick={
-                            () => dispatch(decreaseAngle())
+                            () => {
+                                dispatch(decreaseAngle());
+                                makePicture(centerX, centerY, angle, radius);
+                            }
                         }>minus</button></td>
                     </tr>
                     <tr>
@@ -37,9 +47,11 @@ export default function InputValues() {
                             <input 
                             type="number" 
                             value={angle}
-                            onChange={e => {dispatch(changeAngle(e.target.value)); 
-                                const canvas = document.querySelector('#distributorCanvas');
-                                drawDistributor(canvas, centerX, centerY, angle, radius)}}
+                            onChange={e => {
+                                dispatch(changeAngle(e.target.value)); 
+                                makePicture(centerX, centerY, angle, radius);
+                                }
+                            }
                             />
                         </td>
                     </tr>
@@ -52,13 +64,19 @@ export default function InputValues() {
                     <tr>
                         <th>増加</th>
                         <td><button onClick={
-                            () => dispatch(increaseCenterX())
+                            () => {
+                                dispatch(increaseCenterX());
+                                makePicture(centerX, centerY, angle, radius);
+                            }
                         }>plus</button></td>
                     </tr>
                     <tr>
                         <th>減少</th>
                         <td><button onClick={
-                            () => dispatch(decreaseCenterX())
+                            () => {
+                                dispatch(decreaseCenterX());
+                                makePicture(centerX, centerY, angle, radius);
+                            }
                         }>minus</button></td>
                     </tr>
                     <tr>
@@ -67,7 +85,11 @@ export default function InputValues() {
                             <input 
                             type="number" 
                             value={centerX}
-                            onChange={e => dispatch(changeCenterX(e.target.value))}
+                            onChange={e => {
+                                dispatch(changeCenterX(e.target.value));
+                                makePicture(centerX, centerY, angle, radius);
+                            }
+                            }
                             />
                         </td>
                     </tr>
@@ -80,13 +102,19 @@ export default function InputValues() {
                     <tr>
                         <th>増加</th>
                         <td><button onClick={
-                            () => dispatch(increaseCenterY())
+                            () => {
+                                dispatch(increaseCenterY());
+                                makePicture(centerX, centerY, angle, radius);
+                            }
                         }>plus</button></td>
                     </tr>
                     <tr>
                         <th>減少</th>
                         <td><button onClick={
-                            () => dispatch(decreaseCenterY())
+                            () => {
+                                dispatch(decreaseCenterY());
+                                makePicture(centerX, centerY, angle, radius);
+                            }
                         }>minus</button></td>
                     </tr>
                     <tr>
@@ -95,7 +123,11 @@ export default function InputValues() {
                             <input 
                             type="number" 
                             value={centerY}
-                            onChange={e => dispatch(changeCenterY(e.target.value))}
+                            onChange={e => {
+                                dispatch(changeCenterY(e.target.value));
+                                makePicture(centerX, centerY, angle, radius);
+                            }
+                            }
                             />
                         </td>
                     </tr>
@@ -108,13 +140,19 @@ export default function InputValues() {
                     <tr>
                         <th>増加</th>
                         <td><button onClick={
-                            () => dispatch(increaseRadius())
+                            () => {
+                                dispatch(increaseRadius());
+                                makePicture(centerX, centerY, angle, radius);
+                            }
                         }>plus</button></td>
                     </tr>
                     <tr>
                         <th>減少</th>
                         <td><button onClick={
-                            () => dispatch(decreaseRadius())
+                            () => {
+                                dispatch(decreaseRadius());
+                                makePicture(centerX, centerY, angle, radius);;
+                            }
                         }>minus</button></td>
                     </tr>
                     <tr>
@@ -124,8 +162,8 @@ export default function InputValues() {
                             type="number" 
                             value={radius}
                             onChange={e => {dispatch(changeRadius(e.target.value));
-                                const canvas = document.querySelector('#distributorCanvas');
-                                drawDistributor(canvas, centerX, centerY, angle, radius);}
+                                            makePicture(centerX, centerY, angle, radius);
+                            }
                             }
                             />
                         </td>

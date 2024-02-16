@@ -16,7 +16,7 @@ export const positionSlice = createSlice({
             state.angle -= 1;
         },
         changeAngle: (state, action) => {
-            state.angle = action.payload;
+            state.angle = Number(action.payload);
         },
         increaseCenterX: (state) => {
             state.centerX += 1;
@@ -25,7 +25,7 @@ export const positionSlice = createSlice({
             state.centerX -= 1;
         },
         changeCenterX: (state, action) => {
-            state.centerX = action.payload;
+            state.centerX = Number(action.payload);
         },
         increaseCenterY: (state) => {
             state.centerY += 1;
@@ -34,7 +34,7 @@ export const positionSlice = createSlice({
             state.centerY -= 1;
         },
         changeCenterY: (state, action) => {
-            state.centerY = action.payload;
+            state.centerY = Number(action.payload);
         },
         increaseRadius: (state) => {
             state.radius += 1;
@@ -43,7 +43,7 @@ export const positionSlice = createSlice({
             state.radius -= 1;
         },
         changeRadius: (state, action) => {
-            state.radius = action.payload;
+            state.radius = Number(action.payload);
         },
     },
 });
